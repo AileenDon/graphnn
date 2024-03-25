@@ -15,7 +15,7 @@ http://www.cc.gatech.edu/~hdai8/graphnn/html/annotated.html
 
 Tested under Ubuntu 14.04, 16.04 and Mac OSX 10.12.6
 
-##### Download and install cuda from https://developer.nvidia.com/cuda-toolkit
+##### Download and install cuda from https://developer.nvidia.com/cuda-toolkit (not required for CPU_ONLY)
 
     wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_8.0.44-1_amd64.deb
     sudo dpkg -i cuda-repo-ubuntu1404_8.0.44-1_amd64.deb
@@ -28,7 +28,10 @@ Tested under Ubuntu 14.04, 16.04 and Mac OSX 10.12.6
     export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
     export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
     
-##### Download and install intel mkl
+##### Download and install intel mkl (Required for both GPU and CPU_ONLY)
+
+    sudo apt update
+    sudo apt install intel-mkl-full
 
   in .bashrc, add the following path
   
