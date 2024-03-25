@@ -1,4 +1,5 @@
 include make_common
+USE_GPU = 0
 
 ifeq ($(USE_GPU), 1)
     build_root = build
