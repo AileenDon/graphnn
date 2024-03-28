@@ -42,9 +42,13 @@ void MemHolder<mode>::Recycle(T*& p)
 	if (p)
 	{
 		auto id = reinterpret_cast<std::uintptr_t>(p);
-		ASSERT(pt_info.count(id), "recycling a pointer which is not allocated by me");
-		avail_pt_map.insert(std::make_pair(pt_info[id].first, (void*)p));
-		p = nullptr;
+		if (pt_info.count(id))
+		{
+			avail_pt_map.insert(std::make_pair(pt_info[id].first, (void*)p));
+			p = nullptr;
+		} else {
+			std::cerr << "gnn::MemHolder<mode>::Recycle: Cannot recycle a pointer which is not allocated by me. Ignoring operation...\n";
+		}
 	}
 	r_loc.unlock();
 }
